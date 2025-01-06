@@ -3,6 +3,7 @@ library(grid)
 library(readxl)
 
 #---- AUC VL in placebo---#
+master_file = "~/RSV_HIC_meta_analysis/database_for_meta_analysis.xlsx"
 auc_VL_pbo <- read_excel(path = master_file, sheet = "auc_VL_pbo_after_first dose")
 
 auc_VL_pbo.model <- metamean(
@@ -34,7 +35,6 @@ grid.text("Mean viral load AUC (log10 PFUe.hr/mL) after first dose for placebo -
 
 
 #-- Delta method for SE calculation---#
-master_file = "/Users/prosenjitkundu/Desktop/RSV_manuscript_clean/Supplemental_Table_1.xlsx"
 treatment_diff = read_excel(path = master_file, sheet = "auc_VL_high_dose")
 A = 1/treatment_diff$mean_pbo
 B = -treatment_diff$mean_trt/treatment_diff$mean_pbo^2
